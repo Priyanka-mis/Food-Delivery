@@ -46,11 +46,6 @@ document.querySelectorAll(".main-highlight").forEach((section) => {
 
 
 
-
-
-
-
-
 // // Scrolling Logic for Filter Wrapper  menu category
 document.querySelector("#back-minus").addEventListener("click", function (e) {
     e.preventDefault();
@@ -155,39 +150,6 @@ function handleSignUp(event) {
 
 
 
-
-
-// add cart item
-// const addToCartIcons = document.querySelectorAll('.add-to-cart'); // All "Add to Cart" icons
-// const cartCountElement = document.getElementById('cart-count'); // Cart count element
-
-// // Initialize cart count
-// let cartCount = 0;
-
-// // Add click event to each "Add to Cart" icon
-// addToCartIcons.forEach((icon) => {
-//     icon.addEventListener('click', () => {
-//         // Toggle the 'selected' state of the icon
-//         icon.classList.toggle('selected');
-
-//         // Update cart count based on the 'selected' state
-//         if (icon.classList.contains('selected')) {
-//             cartCount++; // Item added to the cart
-//         } else {
-//             cartCount--; // Item removed from the cart
-//         }
-
-//         // Update the cart count display
-//         cartCountElement.textContent = cartCount;
-//     });
-// });
-
-
-
-
-
-
-
 const addToCartIcons = document.querySelectorAll('.add-to-cart'); // All "Add to Cart" icons
 const cartCountElement = document.getElementById('cart-count'); // Cart count element
 
@@ -231,6 +193,20 @@ addToCartIcons.forEach((icon) => {
 
 
 
+
+
+
+// this is for contact page 
+
+
+    document.getElementById("openContactForm").addEventListener("click", function () {
+        var contactForm = document.getElementById("contactForm");
+        if (contactForm.style.display === "none" || contactForm.style.display === "") {
+            contactForm.style.display = "flex"; // Show the form
+        } else {
+            contactForm.style.display = "none"; // Hide the form
+        }
+    });
 
 
 

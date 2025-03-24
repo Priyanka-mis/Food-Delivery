@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+    
+<div class="contact-form" id="contact-form">
+    <div class="contact-form-page">
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <input type="hidden" name="access_key" value="7d3eb425-04f4-4833-a462-4667c66b133d" />
+            <input type="hidden" name="recipient_email" value="p3355051@gmail.com" />
+
+            <div class="form-box-information">
+                <p>Name:</p>
+                <input type="text" name="name" placeholder="Your Name.." required />
+            </div>
+
+            <div class="form-box-information">
+                <p>Email:</p>
+                <input type="email" name="email" placeholder="Your Email.." required />
+            </div>
+
+            <div class="form-box-information">
+                <p>Message:</p>
+                <textarea name="message" placeholder="Type Your Message..." required></textarea>
+            </div>
+
+            <div class="form-box-information">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="contact-form-img">
+        <img src="/images/contact us.avif" alt="Contact Us Image">
+    </div>
+</div>
+    
+</body>
+</html>
