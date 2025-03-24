@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+    <title>Responsive Food delivery</title>
+    <link rel="stylesheet" href="index.css"> 
+   
+
+</head>
+<body>
+
+    
+    <!-- sidebar -->
+<div class="sidebar" >
+        <h1 class="logo">FoodTime</h1>
+
+        <div class="sidebar-menus">
+            <a href="#"><i class="fa-solid fa-house"></i>Home </a>
+            <a href="#"><i class="fa-solid fa-money-bill"></i>Bills </a>
+            <a href="#"><i class="fa-solid fa-wallet"></i>Wallet </a>
+            <a href="#"><i class="fa-solid fa-bell"></i>Notification </a>
+            <a href="#"><i class="fa-solid fa-phone"></i>Contact</a>
+            <a href="#"><i class="fa-solid fa-gear"></i>Sitting </a>
+        </div>
+
+        <div class="sidebar-logout">
+            <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+        </div>
+    </div>
+<!-- main -->
+    <div class="main">
+        <div class="main-navbar">
+            <i class="fa-solid fa-bars" id="menu-toggle"></i>
+            <div class="search">
+                <input type="text" placeholder="What you want to eat?">
+                <button class="search-btn">Search</button>
+            </div>
+            <div class="profile">
+                <a class="cart" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                <div>
+                    <a class="user" href="#" id="user-icon" onclick="showSignUp()">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </div>
+                <div id="auth-form" class="hidden">
+                    <button class="close-btn" onclick="closeAuthForm()">×</button>
+            
+                    <!-- Sign Up Form -->
+                    <form id="signup-form" onsubmit="handleSignUp(event)">
+                        <h2>Sign Up</h2>
+                        <div class="input-group">
+                            <div class="input-field">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="username" name="username" required placeholder="Username">
+                            </div>
+                            <div class="input-field">
+                                <i class="fa-regular fa-envelope"></i>
+                                <input type="email" id="email" name="email" required placeholder="Email">
+                            </div>
+                            <div class="input-field">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="password" name="password" required placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="btn-field">
+                            <button type="submit">Submit</button>
+                            <button type="button" onclick="showSignIn()">Sign In</button>
+                        </div>
+                    </form>
+    
+                    <form id="signin-form" onsubmit="handleSignIn(event)">
+                        <h2>Sign In</h2>
+                        <div class="input-group">
+                          <div class="input-field">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="signin-email" name="email" required placeholder="Email">
+                          </div>
+                          <div class="input-field">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signin-password" name="password" required placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="btn-field">
+                          <button type="submit">Sign In</button>
+                          <button type="button" onclick="showSignUp()">Sign Up</button>
+                        </div>
+                      </form>
+                      
+                </div>
+            </div>
+        </div>
+
+        <div class="main-highlight">
+            <div class="main-header">
+                <h2 class="main-title">Recommendation</h2>
+                <div class="main-arrow">
+                    <i class="fa-solid fa-circle-chevron-left back" id="back"></i>
+                    <i class="fa-solid fa-circle-chevron-right next" id="next"></i>
+        
+                </div>
+            </div>
+
+            <div class="highlight-wrapper">
+                <div class="highlight-card"> 
+                    <img class="highlight-img" src="/images/salad.jpg">
+                    <div class="highlight-desc">
+                        <h4>Fresh Salad</h4>
+                        <p>$42.50</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <img class="highlight-img" src="/images/coffe.jpg">
+                    <div class="highlight-desc">
+                        <h4>Coffe Latte</h4>
+                        <p>$20.00</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <img class="highlight-img" src="/images/steak.jpg">
+                    <div class="highlight-desc">
+                        <h4>Premium Steak</h4>
+                        <p>$145.20</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <img class="highlight-img" src="/images/burger.jpg">
+                    <div class="highlight-desc">
+                        <h4>Big Burger</h4>
+                        <p>$35.00</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- main-menu/ order -->
+        <div class="main-menus">
+            <div class="main-filter">
+                <div>
+                    <h4 class="main-title">Menu <br>Category</h4>
+                    <div class="main-arrow">
+                        <i class="fa-solid fa-circle-chevron-left" id="back-minus"></i>
+                        <i class="fa-solid fa-circle-chevron-right" id="next-minus"></i>
+                    </div>
+                </div>
+
+                <div class="filter-wrapper">
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <p>All Menu</p>
+                    </div>
+
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-burger"></i>
+                        </div>
+                        <p>Burger</p>
+                    </div>
+
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-fish"></i>
+                        </div>
+                        <p>Seafood</p>
+                    </div>
+
+                     <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-egg"></i>
+                        </div>
+                        <p>Egg</p>
+                    </div>
+
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-wine-bottle"></i>
+                        </div>
+                        <p>Wine</p>
+                    </div>
+
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-mug-saucer"></i>
+                        </div>
+                        <p>Coffee</p>
+                    </div>
+
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <p>Cake</p>
+                    </div>
+
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <i class="fa-solid fa-apple-whole"></i>
+                        </div>
+                        <p>Healthy</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+            <div class="main-details">
+                <h2 class="main-title">Choose Order</h2>
+
+                <div class="detail-wrapper">
+                    <div class="detail-card">
+                        <img class="details-img" src="/images/shrimp soul.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4><a href="https://www.google.com/search?tbm=isch&q=Shrimp" target="_blank" rel="noopener noreferrer">Shrimp Images</a></h4>
+                                <p class="details-sub">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus illo amet quidem accusantium vitae ab quo quia. </p>
+                                <p class="price">$152.00</p>
+                            </div>
+                            <i class="fa-regular fa-bookmark" id="detail-favorate"></i>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="details-img" src="/images/pizza.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4><a href="https://www.google.com/search?tbm=isch&q=pizza" target="_blank" rel="noopener noreferrer">Pizza Images</a></h4>
+                                <p class="details-sub">Autem nam repellendus prefrendis enim eum provident</p>
+                                <p class="price">$68.75</p>
+                            </div>
+                            <i class="fa-regular fa-bookmark" id="detail-favorate"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-card">
+                        <img class="details-img" src="/images/wine.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4><a href="https://www.google.com/search?tbm=isch&q=wine" target="_blank" rel="noopener noreferrer">Wine Images</a></h4>
+                                <p class="details-sub">Illum officia porro amet consectetur adipisicing facilis eum eveniet</p>
+                                <p class="price">$15.90</p>
+                            </div>
+                            <i class="fa-regular fa-bookmark" id="detail-favorate"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-card">
+                        <img class="details-img" src="/images/burger.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4><a href="https://www.google.com/search?tbm=isch&q=burger" target="_blank" rel="noopener noreferrer">Big Burger Images</a></h4>
+                                <p class="details-sub">Temporibus at praesentium nisi cumue consectetur dolorem </p>
+                                <p class="price">$35.00</p>
+                            </div>
+                            <i class="fa-regular fa-bookmark" id="detail-favorate"></i>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <img class="details-img" src="/images/coffe.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4><a href="https://www.google.com/search?tbm=isch&q=Hot+Coffee+Latte" target="_blank" rel="noopener noreferrer">Hot Coffee Latte</a></h4>
+
+                                <p class="details-sub">Minus ipsa fugiat non at expedita incidunt provident dolorem architecto</p>
+                                <p class="price">$20.00</p>
+                            </div>
+                            <i class="fa-regular fa-bookmark" id="detail-favorate"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-card">
+                        <img class="details-img" src="/images/salad.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4><a href="https://www.google.com/search?tbm=isch&q=fresh+salad" target="_blank" rel="noopener noreferrer">Fresh Salad Images</a> </h4>
+                                <p class="details-sub">corporis accusamus harum alias hic lanore officiis natus</p>
+                                <p class="price">$42.00</p>
+                            </div>
+                            <i class="fa-regular fa-bookmark" id="detail-favorate"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-highlight" id="choose-order">
+                <div class="main-header">
+                    <h2 class="main-title">Choose your order</h2>
+                    <div class="main-arrow">
+                        <i class="fa-solid fa-circle-chevron-left back" id="back"></i>
+                        <i class="fa-solid fa-circle-chevron-right next" id="next"></i>    
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="highlight-wrapper" >
+                <div id="highlight-cardid" >
+                    <img class="chose-img" src="/images/choose imges/Idli.avif">
+                    <img class="chose-img" src="/images/choose imges/Paratha.avif">
+                    <img class="chose-img" src="/images/choose imges/Chole Bhature.avif">
+                    <img class="chose-img" src="/images/choose imges/Dosa.avif">
+                    <img class="chose-img" src="/images/choose imges/Biryani.avif">
+                    <img class="chose-img" src="/images/choose imges/Poha-1.avif">
+                    <img class="chose-img" src="/images/choose imges/Jalebi.avif">
+                    <img class="chose-img" src="/images/choose imges/Pakoda.avif">
+                    <img class="chose-img" src="/images/choose imges/Pav Bhaji.avif">
+                    <img class="chose-img" src="/images/choose imges/Tea.avif">
+                    <img class="chose-img" src="/images/choose imges/Upma.avif">
+                    <img class="chose-img" src="/images/choose imges/Omelette.avif">
+                    <img class="chose-img" src="/images/choose imges/Cake.avif">
+                    <img class="chose-img" src="/images/choose imges/Khichdi.avif">
+                </div>
+                </div>
+            </div>
+
+
+            <div class="main-highlight" id="choose-order">
+                <div class="main-header">
+                    <h2 class="main-title">Shop groceries on Instamart</h2>
+                    <div class="main-arrow">
+                        <i class="fa-solid fa-circle-chevron-left back" id="back"></i>
+                        <i class="fa-solid fa-circle-chevron-right next" id="next"></i>    
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="highlight-wrapper" >
+                    
+                <div id="highlight-cardid" >
+                    <img class="chose-img" src="/images/other-img/vege.avif">
+                    <img class="chose-img" src="/images/other-img/fruits.avif">
+                    <img class="chose-img" src="/images/other-img/munchies.avif">
+                    <img class="chose-img" src="/images/other-img/masala, dry-fruits.avif">
+                    <img class="chose-img" src="/images/other-img/coffee, tea.avif">
+                    <img class="chose-img" src="/images/other-img/dairy.avif">
+                    <img class="chose-img" src="/images/other-img/body-hair.avif">
+                    <img class="chose-img" src="/images/other-img/body-care.avif">
+                    <img class="chose-img" src="/images/other-img/home-kitchen.avif">
+                    <img class="chose-img" src="/images/other-img/sauces.avif">
+                    <img class="chose-img" src="/images/other-img/coldrink.avif">
+                    <img class="chose-img" src="/images/other-img/office-electricals.avif">
+                    <img class="chose-img" src="/images/other-img/paan corner.avif">
+                    <img class="chose-img" src="/images/other-img/wellness.avif">    
+                </div>
+                </div>
+            </div>
+            <!--  -->
+
+            <div class="grocery-highlight" id="choose-order">
+                    <h2 class="grocery-title">Order Vegetable</h2>
+                <hr class="divider-color">
+                <div class="grocery-wrapper"  id="highlight-wrapperid">
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/other-img/vege.avif" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Cauliflower</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                            <!-- <i class="fa-regular fa-bookmark" id="grocery-favorate"></i> -->
+                            <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege1.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Cucumber</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege4.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">spinach</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege3.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Bitter gourd</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege2.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Capsicum</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+                   
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege6.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Pea</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege5.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Cabage</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                             <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                             
+                        </div>
+                    </div>
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege7.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Chilli</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                             <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+
+                    <div class="grocery-card">
+                        <img class="grocery-img" src="/images/vegetable/vege8.jpg" alt="Vegetables">
+                        <div class="grocery-desc">
+                            <div class="grocery-name">
+                                <p class="para">This is Fresh vegetable</p>
+                                <h4 class="item-title">Onion</h4>
+                                <div class="rating-price">
+                                    <i class="fa-solid fa-star"></i>
+                                    <h4 class="rating">4.5</h4>
+                                    <h4 class="price">Price:90$</h4>
+
+                                </div>
+                            </div>
+                             <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for fruits -->
+
+            <div class="grocery-highlight" id="choose-order">
+                <h2 class="grocery-title">Order Fuites</h2>
+            <hr class="divider-color">
+            <div class="grocery-wrapper"  id="highlight-wrapperid">
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/apple.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh Fruits</p>
+                            <h4 class="item-title">Apple</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                        <!-- <i class="fa-regular fa-bookmark" id="grocery-favorate"></i> -->
+                        <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/black grapes.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh Fruits</p>
+                            <h4 class="item-title">Black-Grapes</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/mango.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh Fruits</p>
+                            <h4 class="item-title">Mango</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/guava.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh Fruits</p>
+                            <h4 class="item-title">Guava</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/oranage.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh Fruits</p>
+                            <h4 class="item-title">Orange</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+               
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/grapes.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh vegetable</p>
+                            <h4 class="item-title">Grapes</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/pineapple.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh vegetable</p>
+                            <h4 class="item-title">Pineapple</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                         <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                         
+                    </div>
+                </div>
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/one seed.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh vegetable</p>
+                            <h4 class="item-title">Three Caimito</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                         <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+
+                <div class="grocery-card">
+                    <img class="grocery-img" src="/images/vegetable/pomegranate.jpeg" alt="Vegetables">
+                    <div class="grocery-desc">
+                        <div class="grocery-name">
+                            <p class="para">This is Fresh vegetable</p>
+                            <h4 class="item-title">pomegranate</h4>
+                            <div class="rating-price">
+                                <i class="fa-solid fa-star"></i>
+                                <h4 class="rating">4.5</h4>
+                                <h4 class="price">Price:90$</h4>
+
+                            </div>
+                        </div>
+                         <i class="fa-solid fa-cart-shopping" id="grocery-favorate"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+   
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li>About Us</li>
+                    <li>Swiggy Corporate</li>
+                    <li>Careers</li>
+                    <li>Team</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Help & Support</li>
+                    <li>Partner with us</li>
+                    <li>Ride with us</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li>Terms & Conditions</li>
+                    <li>Cookie Policy</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Available in:</h3>
+                <ul>
+                    <li>Bangalore</li>
+                    <li>Gurgaon</li>
+                    <li>Hyderabad</li>
+                    <li>Delhi</li>
+                
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Life at Swiggy</h3>
+                <ul>
+                    <li>Explore with Swiggy</li>
+                    <li>Swiggy News</li>
+                    <li>Snackables</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Swiggy. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="index.js"></script>
+</html>
